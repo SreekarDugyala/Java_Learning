@@ -1,5 +1,32 @@
 
-@Test
+How to write a kafka test
+
+
+
+@SpringJUnitConfig
+public class KafkaMessageListenerTest {
+
+    @Mock
+    private EmailDelivery emailDelivery;
+
+    @Mock
+    private IEmailDAO imEmailDAO;
+
+    @Mock
+    private IEmailMetadataDAO imEmailMetadataDAO;
+
+    @Mock
+    private IEmailDeliveryDAO imEmailDeliveryDAO;
+
+    @InjectMocks
+    private KafkaMessageListener kafkaMessageListener;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
     public void testEmailAttributeListener_success() throws JsonProcessingException, IEmailDeliveryException {
         String message = "{\"correlationId\": \"12345\", \"preferredFileName\": \"test.pdf\"}";
         Map<String, Object> headersMap = new HashMap<>();
