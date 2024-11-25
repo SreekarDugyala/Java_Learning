@@ -1,0 +1,9 @@
+# IntelliJ IDEA project files
+.idea/
+
+# Java class files
+*.class
+
+# Other common files to ignore
+*.iml
+target/
